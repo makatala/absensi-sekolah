@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+ 
+  <body>
+  <h1>ABSEN SISWA SMPN 01 KARANGANYAR</h1>
+  <body style="background-color:powderblue;">
+    <form>
+      <div class="mb-3">
+        <label for="nama-siswa" class="form-label">Nama siswa</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nama-siswa"
+          placeholder="Masukkan Nama siswa"
+          value=""
+        />
+      </div>
+      <div class="mb-3">
+        <label for="kelas-siswa" class="form-label">kelas siswa</label>
+        <input
+          type="tetx"
+          class="form-control"
+          id="kelas-siswa"
+          placeholder=" masukkan kelas siswa"
+          value=""
+        />
+      </div>
+      <div class="mb-3">
+        <label for="id-siswa" class="form-label">id siswa</label>
+        <input
+          type="tetx"
+          class="form-control"
+          id="id-siswa"
+          placeholder="masukkan id siswa"
+          value=""
+        />
+      </div>
+      <div class="mb-3">
+        <label for="hari-masuk" class="form-label">hari masuk</label>
+        <input
+          type="date"
+          class="form-control"
+          id="hari-masuk"
+          placeholder="masuk kan hari masuk"
+          value=""
+        />
+      </div>
+      <div class="mb-3">
+        <label for="jam-masuk" class="form-label">jam masuk</label>
+        <input
+          type="time"
+          class="form-control"
+          id="jam-masuk"
+          placeholder="masuk kan jam masuk"
+          value=""
+        />
+      </div>
+      <button type="button" id="tombol-tambah" class="btn btn-primary">
+        Tambah Data
+      </button>
+    </form>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nama siswa</th>
+          <th>kelas siswa</th>
+          <th>Id</th>
+          <th>jam masuk</th>
+          <th>hari</th>
+        </tr>
+      </thead>
+      <tbody id="data-siswa"></tbody>
+    </table>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+    <script src="src/script.js"></script>
+  </body>
+</html>
