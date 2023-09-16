@@ -7,8 +7,7 @@ const elButton = document.getElementById('tombol-tambah')
 let indexDataUpdate = -1
 
 function ambilData(key) {
-  console.log(dataString)
-  return JSON.parse(dataString).data
+  
     const dataString = localStorage.getItem(key)
     if (typeof dataString === 'undefined' || dataString === null) {
       return null
