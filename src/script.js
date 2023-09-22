@@ -3,11 +3,11 @@ const elkelasSiswa = document.getElementById('kelas-siswa').value;
 const elidSiswa = document.getElementById('id-siswa').value;
 const elhariMasuk = document.getElementById('hari-masuk').value;
 const eljamMasuk = document.getElementById('jam-masuk').value;
-const elButton = document.getElementById('tombol-tambah')
+const elButton = document.getElementById('tombol-tambah').value;
 let indexDataUpdate = -1
 
 function ambilData(key) {
-  
+ 
     const dataString = localStorage.getItem(key)
     if (typeof dataString === 'undefined' || dataString === null) {
       return null
@@ -49,7 +49,7 @@ function ambilData(key) {
     indexDataUpdate = z
     const dataUpdate = daftarSiswa[z]
     elNamaSiswa.value = dataUpdate.nama
-    elJamMasuk.value = dataUpdate.jam
+    elkelasSiswa.value = dataUpdate.kelas
     elIdSiswa.value = dataUpdate.id
     elHariMasuk.value = dataUpdate.hari
     elJamMasuk.value = dataUpdate.jam
