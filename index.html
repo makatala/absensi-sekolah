@@ -1,92 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="src/style.css" />
-  </head>
- 
-  <body>
-  <h1>ABSEN SISWA SMPN 01 KARANGANYAR</h1>
-  <body style="background-color:powderblue;">
-    <form>
-      <div class="mb-3">
-        <label for="nama-siswa" class="form-label">Nama siswa</label>
-        <input
-          type="text"
-          class="form-control"
-          id="nama-siswa"
-          placeholder="Masukkan Nama siswa"
-          value=""
-        />
+
+<head>
+  <title>Absensi Sekolah</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="src/style.css?v=7" />
+</head>
+
+<body class="d-flex align-items-center py-4 bg-body-tertiary" id="body">
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand menu-halaman" menu="home-page" href="#">Absen Sekolah</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link menu-halaman" menu="siswa-page" href="#">Data Siswa</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link menu-halaman" menu="absen-page" href="#">Data Absen</a>
+            </li>
+          </ul>
+          <span class="text-bg-dark me-3">
+            <div class="upload-btn-wrapper">
+              <button class="btn btn-link text-white" type="button"><i class="bi bi-cloud-upload-fill h5"></i></button>
+              <input type="file" id="upload" onchange="xlsxToStore()" />
+            </div>
+
+            <div class="upload-btn-wrapper">
+              <button type="button" onclick="downloadExcel()" class="btn btn-link text-white">
+                <i class="bi bi-cloud-download-fill h5"></i>
+              </button>
+            </div>
+          </span>
+        </div>
       </div>
-      <div class="mb-3">
-        <label for="kelas-siswa" class="form-label">kelas siswa</label>
-        <input
-          type="tetx"
-          class="form-control"
-          id="kelas-siswa"
-          placeholder=" masukkan kelas siswa"
-          value=""
-        />
+    </nav>
+  </header>
+
+  <!-- home-page -->
+  <main class="form-signin w-80 m-auto" id="home-page">
+    <h1>Selamat Datang di</h1>
+    <h2>Sistem Absensi Sekolah</h2>
+  </main>
+
+  <!-- siswa-page -->
+  <div class="container d-none mt-80" id="siswa-page">
+    <h1 class="mb-3">Data Siswa</h1>
+    <div class="row">
+      <div class="col-lg-5">
+        <form id="form-siswa">
+          <div class="mb-3">
+            <label for="nomor-absen-siswa" class="form-label">Nomor Absen</label>
+            <input type="number" class="form-control" id="nomor-absen-siswa" placeholder="Nomor Absen" value="" />
+          </div>
+          <div class="mb-3">
+            <label for="nama-siswa" class="form-label">Nama Siswa</label>
+            <input type="text" class="form-control" id="nama-siswa" placeholder="Masukkan Nama Siswa" value="" />
+          </div>
+          <div class="mb-3">
+            <label for="kelas" class="form-label">Kelas</label>
+            <input type="text" class="form-control" id="kelas" placeholder="Kelas" value="" />
+          </div>
+          <button type="button" id="tombol-siswa" class="btn btn-primary">
+            Tambah Data
+          </button>
+        </form>
       </div>
-      <div class="mb-3">
-        <label for="id-siswa" class="form-label">id siswa</label>
-        <input
-          type="tetx"
-          class="form-control"
-          id="id-siswa"
-          placeholder="masukkan id siswa"
-          value=""
-        />
+      <div class="col-lg-7">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="text-center">Nomor Absen</th>
+              <th>Nama Siswa</th>
+              <th>Kelas</th>
+              <th class="text-center">Edit</th>
+            </tr>
+          </thead>
+          <tbody id="data-siswa">
+          </tbody>
+        </table>
       </div>
-      <div class="mb-3">
-        <label for="hari-masuk" class="form-label">hari masuk</label>
-        <input
-          type="date"
-          class="form-control"
-          id="hari-masuk"
-          placeholder="masuk kan hari masuk"
-          value=""
-        />
+    </div>
+  </div>
+
+  <!-- absen-page -->
+  <div class="container d-none mt-80" id="absen-page">
+    <h1 class="mb-3">Data Absen</h1>
+    <div class="row">
+      <div class="col-lg-5">
+        <form id="form-absen">
+          <div class="mb-3">
+            <label for="nomor-absen" class="form-label">Nomor Absen</label>
+            <input type="text" class="form-control" id="nomor-absen" placeholder="Masukkan Nomor Absen" value="" />
+          </div>
+          <button type="button" id="tombol-absen" class="btn btn-primary">
+            Tambah Data
+          </button>
+        </form>
       </div>
-      <div class="mb-3">
-        <label for="jam-masuk" class="form-label">jam masuk</label>
-        <input
-          type="time"
-          class="form-control"
-          id="jam-masuk"
-          placeholder="masuk kan jam masuk"
-          value=""
-        />
+      <div class="col-lg-7">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nomor Absen</th>
+              <th>Nama Siswa</th>
+              <th>Tanggal</th>
+              <th>Jam</th>
+            </tr>
+          </thead>
+          <tbody id="data-absen">
+          </tbody>
+        </table>
       </div>
-      <button type="button" id="tombol-tambah" class="btn btn-primary">
-        Tambah Data
-      </button>
-    </form>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Nama siswa</th>
-          <th>kelas siswa</th>
-          <th>Id</th>
-          <th>jam masuk</th>
-          <th>hari</th>
-        </tr>
-      </thead>
-      <tbody id="data-siswa"></tbody>
-    </table>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-      crossorigin="anonymous"
-    ></script>
-    <script src="src/script.js?v=1"></script>
-  </body>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="kodeQRModal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modal-title">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="modal-body">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"
+    integrity="sha512-r22gChDnGvBylk90+2e/ycr3RVrDi8DIOkIGNhJlKfuyQM4tIRAI062MaV8sfjQKYVGjOBaZBOA87z+IhZE9DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  <script src="js/combined.js?v=16"></script>
+</body>
+
 </html>
