@@ -1,6 +1,6 @@
 
 
-elButtonAbsen.addEventListener('click', tambahDataAbsen);
+// elButtonAbsen.addEventListener('click', tambahDataAbsen);
 const elemenTabel = document.getElementById('data-absen');
 
 function tampilkanDataAbsen() {
@@ -16,9 +16,7 @@ function tampilkanDataAbsen() {
   }
 }
 
-function tambahDataAbsen() {
-  console.log('tombol tambah data absen di-klik');
-  let nomor = elNomorAbsen.value;
+function tambahDataAbsen(nomor) {
   if (nomor === '') {
     alert('Mohon lengkapi isian!');
     return;
@@ -26,7 +24,7 @@ function tambahDataAbsen() {
 
   const cariSiswa = dataSiswa.find(d => d.nomor === nomor)
   if (typeof cariSiswa === 'undefined') {
-    alert('Data Siswa tidak ditemukan!')
+    alert(`Data Siswa dengan Nomor Absen ${nomor} tidak ditemukan!`)
     return
   }
   const now = new Date();

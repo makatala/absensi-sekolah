@@ -11,8 +11,8 @@
   <link rel="stylesheet" href="src/style.css?v=7" />
 </head>
 
-<body class="d-flex align-items-center py-4 bg-body-tertiary" id="body">
-  <header>
+<body class="d-flex" id="body">
+  <header class="d-print-none">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand menu-halaman" menu="home-page" href="#">Absen Sekolah</a>
@@ -27,6 +27,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link menu-halaman" menu="absen-page" href="#">Data Absen</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link menu-halaman" menu="qrcode-page" href="#">Cetak Kode QR</a>
             </li>
           </ul>
           <span class="text-bg-dark me-3">
@@ -47,13 +50,13 @@
   </header>
 
   <!-- home-page -->
-  <main class="form-signin w-80 m-auto" id="home-page">
+  <main class="w-80 m-auto halaman" id="home-page">
     <h1>Selamat Datang di</h1>
     <h2>Sistem Absensi Sekolah</h2>
   </main>
 
   <!-- siswa-page -->
-  <div class="container d-none mt-80" id="siswa-page">
+  <main class="container d-none mt-80 halaman" id="siswa-page">
     <h1 class="mb-3">Data Siswa</h1>
     <div class="row">
       <div class="col-lg-5">
@@ -66,10 +69,6 @@
             <label for="nama-siswa" class="form-label">Nama Siswa</label>
             <input type="text" class="form-control" id="nama-siswa" placeholder="Masukkan Nama Siswa" value="" />
           </div>
-          <div class="mb-3">
-            <label for="kelas" class="form-label">Kelas</label>
-            <input type="text" class="form-control" id="kelas" placeholder="Kelas" value="" />
-          </div>
           <button type="button" id="tombol-siswa" class="btn btn-primary">
             Tambah Data
           </button>
@@ -81,7 +80,6 @@
             <tr>
               <th class="text-center">Nomor Absen</th>
               <th>Nama Siswa</th>
-              <th>Kelas</th>
               <th class="text-center">Edit</th>
             </tr>
           </thead>
@@ -90,22 +88,18 @@
         </table>
       </div>
     </div>
-  </div>
+  </main>
 
   <!-- absen-page -->
-  <div class="container d-none mt-80" id="absen-page">
+  <main class="container d-none mt-80 halaman" id="absen-page">
     <h1 class="mb-3">Data Absen</h1>
     <div class="row">
-      <div class="col-lg-5">
-        <form id="form-absen">
-          <div class="mb-3">
-            <label for="nomor-absen" class="form-label">Nomor Absen</label>
-            <input type="text" class="form-control" id="nomor-absen" placeholder="Masukkan Nomor Absen" value="" />
-          </div>
-          <button type="button" id="tombol-absen" class="btn btn-primary">
-            Tambah Data
-          </button>
-        </form>
+      <div class="col-lg-5 w-100">
+        <video id="scanner" width="300" height="0" class="mx-auto"></video>
+        <div class="mx-auto">Hasil: <span id="hasil"></span></div>
+        <button type="button" id="mulai-scan" class="btn btn-primary">
+          Mulai Pindai
+        </button>
       </div>
       <div class="col-lg-7">
         <table class="table">
@@ -122,7 +116,29 @@
         </table>
       </div>
     </div>
-  </div>
+  </main>
+
+
+  <!-- qrcode-page -->
+  <main class="container d-none mt-80 halaman" id="qrcode-page">
+    <div class="d-flex justify-content-between mb-3 d-print-none">
+      <h1 class="mb-0 d-none d-sm-block">Cetak Kode QR</h1>
+      <div class="input-group" style="width: 400px;">
+        <div class="form-floating">
+          <input type="number" class="form-control" id="kode-per-baris" placeholder="" value="3">
+          <label for="floatingInput">Kode per Baris</label>
+        </div>
+        <div class="form-floating">
+          <input type="number" class="form-control" id="ukuran-kode" placeholder="" value="100">
+          <label for="floatingInput">Ukuran Kode (px)</label>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="cetakQRCode()">
+          <i class="bi bi-printer h5"></i> Cetak
+        </button>
+      </div>
+    </div>
+    <div id="area-cetak-qrcode"></div>
+  </main>
 
   <!-- Modal -->
   <div class="modal fade" id="kodeQRModal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
@@ -145,7 +161,9 @@
     integrity="sha512-r22gChDnGvBylk90+2e/ycr3RVrDi8DIOkIGNhJlKfuyQM4tIRAI062MaV8sfjQKYVGjOBaZBOA87z+IhZE9DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
-  <script src="js/combined.js?v=16"></script>
+  <script src="https://unpkg.com/@zxing/library@0.18.3/umd/index.min.js"></script>
+  <script src="js/combined.js?v=28"></script>
+  
 </body>
 
 </html>

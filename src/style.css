@@ -24,3 +24,7 @@ body {
   top: 0;
   opacity: 0;
 }
+
+.page-break-inside-avoid {
+  page-break-inside: avoid !important;
+}
