@@ -1,14 +1,16 @@
 
-
 // elemen
-const elBody = document.getElementById("body")
-
+const elFormKelas = document.getElementById('form-kelas')
 const elFormSiswa = document.getElementById('form-siswa')
 const elFormAbsen = document.getElementById('form-absen')
+const elKelasSiswa = document.getElementById('kelas-siswa')
 const elNamaSiswa = document.getElementById('nama-siswa')
 const elNomorAbsenSiswa = document.getElementById('nomor-absen-siswa')
 const elNomorAbsen = document.getElementById('nomor-absen')
 const elButtonSiswa = document.getElementById('tombol-siswa')
+const elTabelSiswa = document.getElementById('data-siswa')
+const templateRowSiswa = elTabelSiswa.querySelector('tr')
+
 const elButtonAbsen = document.getElementById('tombol-absen')
 const elUploadFile = document.getElementById('upload')
 const elModalTitle = document.getElementById('modal-title')

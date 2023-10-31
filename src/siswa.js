@@ -11,11 +11,13 @@ function tampilkanDataSiswa() {
     elemenbarisdata.innerHTML = `
     <td class="text-center">
       ${item.nomor} 
-      <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#kodeQRModal" onclick="buatKodeQR('${item.nomor}-${item.nama}')">
+      <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#kodeQRModal" onclick="buatKodeQR('${item.nomor}-${item.nama}-${item.kelas}')">
         <i class="bi bi-qr-code"></i>
       </button>
     </td>
     <td>${item.nama}</td>
+    <td class="text-center">
+    <td>${item.kelas}</td>
     <td class="text-center">
       <button type="button" onclick="tampilkanUpdateDataSiswa(${i})" class="btn btn-link">
       <i class="bi bi-pencil-square"></i>
@@ -33,6 +35,7 @@ function tampilkanUpdateDataSiswa(z) {
   const dataUpdate = dataSiswa[z]
   elNamaSiswa.value = dataUpdate.nama
   elNomorAbsenSiswa.value = dataUpdate.nomor
+  elKelasSiswa.value = dataUpdate.kelas
   elButtonSiswa.innerText = 'Update Data'
 }
 
@@ -46,7 +49,8 @@ function tambahSiswa() {
   console.log('tombol tambah data di-klik');
   let namaSiswa = elNamaSiswa.value;
   let nomor = elNomorAbsenSiswa.value;
-  if (namaSiswa === '' || nomor === '') {
+  let kelas = elKelasSiswa.value;
+  if (namaSiswa === '' || nomor === ''|| kelas === '') {
     alert('Mohon lengkapi isian!')
     return
   }

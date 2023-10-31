@@ -11,7 +11,7 @@ function tampilkanDataAbsen() {
     const cariSiswa = dataSiswa.find(d => d.nomor === item.nomor)
     if (typeof cariSiswa === 'undefined') continue
     const elemenbarisdata = document.createElement('tr');
-    elemenbarisdata.innerHTML = `<td>${item.nomor}</td><td>${cariSiswa.nama}</td><td>${item.hari}</td><td>${item.jam}</td>`;
+    elemenbarisdata.innerHTML = `<td>${item.nomor}</td><td>${cariSiswa.nama}</td><td>${item.kelas}</td><td>${item.hari}</td><td>${item.jam}</td>`;
     elemenTabel.appendChild(elemenbarisdata);
   }
 }
@@ -40,7 +40,7 @@ function tambahDataAbsen(nomor) {
   const jamMasuk = `${hour}:${minute}:${second}`
 
   const cariAbsen = dataAbsen.find(d => d.hari === hariMasuk && d.nomor === nomor)
-  console.log(JSON.stringify({ cariAbsen }))
+  // console.log(JSON.stringify({ cariAbsen }))
   if (typeof cariAbsen !== 'undefined') {
     alert(`${cariSiswa.nama} sudah absen hari ini`)
     return
@@ -48,7 +48,7 @@ function tambahDataAbsen(nomor) {
 
   dataAbsen.push({ nomor, hari: hariMasuk, jam: jamMasuk });
   simpanData('absen', dataAbsen)
-  console.log(JSON.stringify({ dataAbsen }));
+  // console.log(JSON.stringify({ dataAbsen }));
   tampilkanDataAbsen()
   elFormAbsen.reset()
 }

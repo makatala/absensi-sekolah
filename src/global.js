@@ -1,4 +1,5 @@
 // variabel
+let dataKelas = ambilData('kelas') || []
 let dataSiswa = ambilData('siswa') || []
 let dataAbsen = ambilData('absen') || []
 
