@@ -16,7 +16,6 @@ function tampilkanDataSiswa() {
       </button>
     </td>
     <td>${item.nama}</td>
-    <td class="text-center">
     <td>${item.kelas}</td>
     <td class="text-center">
       <button type="button" onclick="tampilkanUpdateDataSiswa(${i})" class="btn btn-link">
@@ -57,7 +56,7 @@ function tambahSiswa() {
 
   if (indexDataUpdate > -1) {
     elButtonSiswa.innerText = 'Tambah Data'
-    dataSiswa.splice(indexDataUpdate, 1, { nomor, nama: namaSiswa })
+    dataSiswa.splice(indexDataUpdate, 1, { nomor, nama: namaSiswa, kelas })
     indexDataUpdate = -1
   } else {
     const cariSiswa = dataSiswa.find(d => d.nomor === nomor)
@@ -65,7 +64,7 @@ function tambahSiswa() {
       alert('Nomor Absen Sudah Digunakan')
       return
     }
-    dataSiswa.push({ nomor, nama: namaSiswa });
+    dataSiswa.push({ nomor, nama: namaSiswa, kelas });
   }
   simpanData('siswa', dataSiswa)
   console.log(JSON.stringify({ dataSiswa }));
