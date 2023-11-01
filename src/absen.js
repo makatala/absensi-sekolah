@@ -11,7 +11,7 @@ function tampilkanDataAbsen() {
     const cariSiswa = dataSiswa.find(d => d.nomor === item.nomor)
     if (typeof cariSiswa === 'undefined') continue
     const elemenbarisdata = document.createElement('tr');
-    elemenbarisdata.innerHTML = `<td>${item.nomor}</td><td>${cariSiswa.nama}</td><td>${item.kelas}</td><td>${item.hari}</td><td>${item.jam}</td>`;
+    elemenbarisdata.innerHTML = `<td>${item.nomor}</td><td>${cariSiswa.nama}</td><td>${cariSiswa.kelas}</td><td>${item.hari}</td><td>${item.jam}</td>`;
     elemenTabel.appendChild(elemenbarisdata);
   }
 }
