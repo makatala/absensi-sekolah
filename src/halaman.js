@@ -15,8 +15,5 @@ function bukaHalaman(e) {
     element.classList.add('d-none')
   })
   document.getElementById(dataMenu).classList.remove('d-none')
-  elBody.classList.remove('align-items-center', 'd-flex')
-  if (dataMenu === 'home-page') {
-    elBody.classList.add('align-items-center', 'd-flex')
-  }
+ 
 }

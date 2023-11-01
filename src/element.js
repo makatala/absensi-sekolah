@@ -1,8 +1,9 @@
 
 // elemen
-const elFormKelas = document.getElementById('form-kelas')
+
 const elFormSiswa = document.getElementById('form-siswa')
 const elFormAbsen = document.getElementById('form-absen')
+const elFormKelas = document.getElementById('form-kelas')
 const elKelasSiswa = document.getElementById('kelas-siswa')
 const elNamaSiswa = document.getElementById('nama-siswa')
 const elNomorAbsenSiswa = document.getElementById('nomor-absen-siswa')

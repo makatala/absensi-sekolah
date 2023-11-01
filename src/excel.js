@@ -12,7 +12,7 @@ function downloadExcel() {
     const cariSiswa = dataSiswa.find(d => d.nomor === element.nomor)
     if (typeof cariSiswa === 'undefined') continue
 
-    tempDataAbsen.push({ nomor: element.nomor, nama: cariSiswa.nama, kelas: cariSiswa.kelas, hari: element.hari, jam: element.jam })
+    tempDataAbsen.push({ nomor: element.nomor, nama: cariSiswa.nama, kelas: element.kelas, hari: element.hari, jam: element.jam })
   }
 
   const wsAbsen = XLSX.utils.json_to_sheet(tempDataAbsen)

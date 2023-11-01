@@ -1,5 +1,5 @@
 elButtonSiswa.addEventListener('click', tambahSiswa);
-const elTabelSiswa = document.getElementById('data-siswa');
+
 
 function tampilkanDataSiswa() {
   tampilkanQrCode()

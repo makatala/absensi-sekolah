@@ -54,3 +54,4 @@ function tambahDataAbsen(nomor) {
 }
 
 tampilkanDataAbsen()
+

@@ -51,8 +51,8 @@
 
   <!-- home-page -->
   <main class="w-80 m-auto halaman" id="home-page">
-    <h1>Selamat Datang di SAOSSAKRA</h1>      
-    <h2> (Sistem Absensi Siswa SMPN 1 KRA) </h2>
+    <h1>Selamat Datang di SAOS SAKRA</h1>      
+    <h2> (Sistem Absensi Online Siswa SMPN 1 KRA) </h2>
     <!DOCTYPE html>
  </main>
 
@@ -72,7 +72,7 @@
           </div>
           <div class="mb-3">
             <label for="kelas-siswa" class="form-label">Kelas Siswa</label>
-            <input type="text" class="form-control" id="kelas-siswa" placeholder="Masukkan Kelas Siswa" value="" />
+            <input type="number" class="form-control" id="kelas-siswa" placeholder="Masukkan Kelas Siswa" value="" />
           </div>
           <button type="button" id="tombol-siswa" class="btn btn-primary">
             Tambah Data
@@ -102,7 +102,7 @@
   <main class="container d-none mt-80 halaman" id="absen-page">
     <h1 class="mb-3">Data Absen</h1>
     <div class="row">
-      <div class="col-lg-5 w-100">
+      <div class="col-lg-5">
         <video id="scanner" width="300" height="0" class="mx-auto"></video>
         <div class="mx-auto">Hasil: <span id="hasil"></span></div>
         <button type="button" id="mulai-scan" class="btn btn-primary">
@@ -115,7 +115,7 @@
             <tr>
               <th>Nomor Absen</th>
               <th>Nama Siswa</th>
-              <th>Kelas Siswa</th>
+              <th> kelas Siswa</th>
               <th>Tanggal</th>
               <th>Jam</th>
             </tr>
